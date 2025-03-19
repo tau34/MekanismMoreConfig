@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.tau34.mmc.mixin",
+  "refmap": "mmc.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EnumToggleMixin",
+    "FusionReactorDataMixin",
+    "ItemGaugeDropperMixin",
+    "MiniElementMixin",
+    "ModificationStationTileMixin",
+    "ModuleAttackMixin",
+    "ModuleDeferredRegisterMixin",
+    "ModuleExcavationMixin",
+    "ModuleLocomotiveMixin"
+  ],
+  "client": [
+    "GuiModuleScreenMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
