@@ -13,7 +13,11 @@
     "ModuleAttackMixin",
     "ModuleDeferredRegisterMixin",
     "ModuleExcavationMixin",
-    "ModuleLocomotiveMixin"
+    "ModuleLocomotiveMixin",
+    "ModuleFarmingMixin",
+    "ModuleBlastingMixin",
+    "ModulePropulsionMixin",
+    "ModuleMagneticAttractionMixin"
   ],
   "client": [
     "GuiModuleScreenMixin"
