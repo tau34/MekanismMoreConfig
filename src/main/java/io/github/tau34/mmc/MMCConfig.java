@@ -28,8 +28,17 @@ public class MMCConfig extends BaseMekanismConfig {
     public final CachedIntValue energyUnitStacks;
     public final CachedIntValue excavationUnitStacks;
     public final CachedIntValue attackUnitStacks;
+    public final CachedIntValue farmingUnitStacks;
     public final CachedIntValue fortuneUnitStacks;
+    public final CachedIntValue blastingUnitStacks;
+    public final CachedIntValue elecBreathUnitStacks;
+    public final CachedIntValue visionUnitStacks;
     public final CachedIntValue locomotiveUnitStacks;
+    public final CachedIntValue repulsorUnitStacks;
+    public final CachedIntValue propulsionUnitStacks;
+    public final CachedIntValue magneticUnitStacks;
+    public final CachedIntValue solarUnitStacks;
+    public final CachedIntValue geothermalUnitStacks;
 
     public final CachedDoubleValue fusionIgnitionTemp;
 
@@ -67,13 +76,31 @@ public class MMCConfig extends BaseMekanismConfig {
         energyUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Energy Unit Stacks. default: 8, min: 1, max: 64")
                 .defineInRange("energyUnitStacks", 8, 1, 64));
         excavationUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Excavation Escalation Unit Stacks. default: 8, min: 1, max: 64")
-                .defineInRange("excavationUnitStacks", 8, 1, 64));
+                .defineInRange("excavationUnitStacks", 4, 1, 64));
         attackUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Attack Amplification Unit Stacks. default: 8, min: 1, max: 64")
-                .defineInRange("attackUnitStacks", 8, 1, 64));
+                .defineInRange("attackUnitStacks", 4, 1, 64));
+        farmingUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Farming Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("farmingUnitStacks", 4, 1, 64));
+        blastingUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Blasting Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("blastingUnitStacks", 4, 1, 64));
+        elecBreathUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Electrolytic Breathing Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("elecBreathUnitStacks", 4, 1, 64));
+        visionUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Vision Enhancement Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("visionUnitStacks", 4, 1, 64));
         fortuneUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Fortune Unit Stacks. default: 8, min: 1, max: 64")
-                .defineInRange("fortuneUnitStacks", 8, 1, 64));
+                .defineInRange("fortuneUnitStacks", 3, 1, 64));
         locomotiveUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Locomotive Unit Stacks. default: 8, min: 1, max: 64")
-                .defineInRange("locomotiveUnitStacks", 8, 1, 64));
+                .defineInRange("locomotiveUnitStacks", 4, 1, 64));
+        repulsorUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Hydrostatic Repulsor Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("repulsorUnitStacks", 4, 1, 64));
+        propulsionUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Hydraulic Propulsion Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("propulsionUnitStacks", 4, 1, 64));
+        magneticUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Magnetic Attraction Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("magneticUnitStacks", 4, 1, 64));
+        solarUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Solar Recharging Propulsion Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("solarUnitStacks", 8, 1, 64));
+        geothermalUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Geothermal Generator Unit Stacks. default: 8, min: 1, max: 64")
+                .defineInRange("geothermalUnitStacks", 8, 1, 64));
         builder.pop();
 
         builder.comment("Fusion Reactor Settings").push("fusion");
@@ -116,12 +143,48 @@ public class MMCConfig extends BaseMekanismConfig {
         return getUnitStacks().getInt("attackUnitStacks");
     }
 
+    public static int getFarmingUnitStacks() {
+        return getUnitStacks().getInt("farmingUnitStacks");
+    }
+
     public static int getFortuneUnitStacks() {
         return getUnitStacks().getInt("fortuneUnitStacks");
     }
 
+    public static int getBlastingUnitStacks() {
+        return getUnitStacks().getInt("blastingUnitStacks");
+    }
+
+    public static int getBreathingUnitStacks() {
+        return getUnitStacks().getInt("elecBreathUnitStacks");
+    }
+
+    public static int getVisionUnitStacks() {
+        return getUnitStacks().getInt("visionUnitStacks");
+    }
+
     public static int getLocomotiveUnitStacks() {
         return getUnitStacks().getInt("locomotiveUnitStacks");
+    }
+
+    public static int getRepulsorUnitStacks() {
+        return getUnitStacks().getInt("repulsorUnitStacks");
+    }
+
+    public static int getPropulsionUnitStacks() {
+        return getUnitStacks().getInt("propulsionUnitStacks");
+    }
+
+    public static int getMagneticUnitStacks() {
+        return getUnitStacks().getInt("magneticUnitStacks");
+    }
+
+    public static int getSolarUnitStacks() {
+        return getUnitStacks().getInt("solarUnitStacks");
+    }
+
+    public static int getGeothermalUnitStacks() {
+        return getUnitStacks().getInt("geothermalUnitStacks");
     }
 
     private static CommentedConfig getUnitStacks() {

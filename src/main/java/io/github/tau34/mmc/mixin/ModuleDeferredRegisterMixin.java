@@ -44,7 +44,39 @@ public class ModuleDeferredRegisterMixin {
             cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
         }
         if (name.equals("solar_recharging_unit")) {
-            builderModifier = builder -> builder.maxStackSize(64).rarity(Rarity.RARE);
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getSolarUnitStacks()).rarity(Rarity.RARE);
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("geothermal_generator_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getGeothermalUnitStacks()).rarity(Rarity.RARE);
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("farming_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getFarmingUnitStacks()).rarity(Rarity.UNCOMMON).exclusive(ModuleData.ExclusiveFlag.INTERACT_BLOCK);
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("blasting_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getBlastingUnitStacks()).rarity(Rarity.RARE).handlesModeChange().rendersHUD();
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("electrolytic_breathing_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getBreathingUnitStacks()).rarity(Rarity.UNCOMMON);
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("vision_enhancement_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getVisionUnitStacks()).handlesModeChange().rendersHUD().disabledByDefault();
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("hydrostatic_repulsor_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getRepulsorUnitStacks()).rarity(Rarity.RARE);
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("hydraulic_propulsion_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getPropulsionUnitStacks()).rarity(Rarity.RARE);
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+        if (name.equals("magnetic_attraction_unit")) {
+            builderModifier = builder -> builder.maxStackSize(MMCConfig.getMagneticUnitStacks()).rarity(Rarity.RARE).handlesModeChange();
             cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
         }
     }

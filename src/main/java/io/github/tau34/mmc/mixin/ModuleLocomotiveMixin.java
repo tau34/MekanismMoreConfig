@@ -28,7 +28,7 @@ public class ModuleLocomotiveMixin {
                                    ModuleConfigItemCreator configItemCreator,
                                    CallbackInfo ci) {
         this.mss = configItemCreator.createConfigItem("sprint_boost",
-                MekanismLang.MODULE_SPRINT_BOOST, new ModuleEnumData(ModifiedSprintSpeed.M01,
+                MekanismLang.MODULE_SPRINT_BOOST, new ModuleEnumData<>(ModifiedSprintSpeed.M01,
                         module.getInstalledCount() + 1));
         ci.cancel();
     }
