@@ -148,59 +148,59 @@ public class MMCConfig extends BaseMekanismConfig {
     }
 
     public static int getEnergyUnitStacks() {
-        return getUnitStacks().getInt("energyUnitStacks");
+        return getUnitStacks() == null ? 8 : getUnitStacks().getInt("energyUnitStacks");
     }
 
     public static int getExcavationUnitStacks() {
-        return getUnitStacks().getInt("excavationUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("excavationUnitStacks");
     }
 
     public static int getAttackUnitStacks() {
-        return getUnitStacks().getInt("attackUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("attackUnitStacks");
     }
 
     public static int getFarmingUnitStacks() {
-        return getUnitStacks().getInt("farmingUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("farmingUnitStacks");
     }
 
     public static int getFortuneUnitStacks() {
-        return getUnitStacks().getInt("fortuneUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("fortuneUnitStacks");
     }
 
     public static int getBlastingUnitStacks() {
-        return getUnitStacks().getInt("blastingUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("blastingUnitStacks");
     }
 
     public static int getBreathingUnitStacks() {
-        return getUnitStacks().getInt("elecBreathUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("elecBreathUnitStacks");
     }
 
     public static int getVisionUnitStacks() {
-        return getUnitStacks().getInt("visionUnitStacks");
+        return getUnitStacks() == null ? 3 : getUnitStacks().getInt("visionUnitStacks");
     }
 
     public static int getLocomotiveUnitStacks() {
-        return getUnitStacks().getInt("locomotiveUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("locomotiveUnitStacks");
     }
 
     public static int getRepulsorUnitStacks() {
-        return getUnitStacks().getInt("repulsorUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("repulsorUnitStacks");
     }
 
     public static int getPropulsionUnitStacks() {
-        return getUnitStacks().getInt("propulsionUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("propulsionUnitStacks");
     }
 
     public static int getMagneticUnitStacks() {
-        return getUnitStacks().getInt("magneticUnitStacks");
+        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("magneticUnitStacks");
     }
 
     public static int getSolarUnitStacks() {
-        return getUnitStacks().getInt("solarUnitStacks");
+        return getUnitStacks() == null ? 8 : getUnitStacks().getInt("solarUnitStacks");
     }
 
     public static int getGeothermalUnitStacks() {
-        return getUnitStacks().getInt("geothermalUnitStacks");
+        return getUnitStacks() == null ? 8 : getUnitStacks().getInt("geothermalUnitStacks");
     }
 
     private static CommentedConfig getUnitStacks() {
@@ -208,19 +208,19 @@ public class MMCConfig extends BaseMekanismConfig {
     }
 
     public static int getBasicProcesses() {
-        return getFactory().getInt("basicFactoryProcesses");
+        return getFactory() == null ? 3 : getFactory().getInt("basicFactoryProcesses");
     }
 
     public static int getAdvancedProcesses() {
-        return getFactory().getInt("advancedFactoryProcesses");
+        return getFactory() == null ? 5 : getFactory().getInt("advancedFactoryProcesses");
     }
 
     public static int getEliteProcesses() {
-        return getFactory().getInt("eliteFactoryProcesses");
+        return getFactory() == null ? 7 : getFactory().getInt("eliteFactoryProcesses");
     }
 
     public static int getUltimateProcesses() {
-        return getFactory().getInt("ultimateFactoryProcesses");
+        return getFactory() == null ? 9 : getFactory().getInt("ultimateFactoryProcesses");
     }
 
     private static CommentedConfig getFactory() {
