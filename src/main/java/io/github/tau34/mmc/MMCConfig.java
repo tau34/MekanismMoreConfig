@@ -42,6 +42,11 @@ public class MMCConfig extends BaseMekanismConfig {
 
     public final CachedDoubleValue fusionIgnitionTemp;
 
+    public final CachedIntValue basicFactoryProcesses;
+    public final CachedIntValue advancedFactoryProcesses;
+    public final CachedIntValue eliteFactoryProcesses;
+    public final CachedIntValue ultimateFactoryProcesses;
+
     private final ForgeConfigSpec configSpec;
 
     MMCConfig() {
@@ -106,6 +111,17 @@ public class MMCConfig extends BaseMekanismConfig {
         builder.comment("Fusion Reactor Settings").push("fusion");
         fusionIgnitionTemp = CachedDoubleValue.wrap(this, builder.comment("the ignition temperature of a fusion reactor")
                 .defineInRange("ignitionTemp", 1.0E8, 0, Double.MAX_VALUE));
+        builder.pop();
+
+        builder.comment("Factory Processes Settings").push("factory");
+        basicFactoryProcesses = CachedIntValue.wrap(this, builder.comment("Basic Factory Processes. default: 3, min: 1, max: 2147483647")
+                .defineInRange("basicFactoryProcesses", 3, 1, Integer.MAX_VALUE));
+        advancedFactoryProcesses = CachedIntValue.wrap(this, builder.comment("Advanced Factory Processes. default: 5, min: 1, max: 2147483647")
+                .defineInRange("advancedFactoryProcesses", 5, 1, Integer.MAX_VALUE));
+        eliteFactoryProcesses = CachedIntValue.wrap(this, builder.comment("Elite Factory Processes. default: 7, min: 1, max: 2147483647")
+                .defineInRange("eliteFactoryProcesses", 7, 1, Integer.MAX_VALUE));
+        ultimateFactoryProcesses = CachedIntValue.wrap(this, builder.comment("Ultimate Factory Processes. default: 9, min: 1, max: 2147483647")
+                .defineInRange("ultimateFactoryProcesses", 9, 1, Integer.MAX_VALUE));
         builder.pop();
 
         configSpec = builder.build();
@@ -189,5 +205,25 @@ public class MMCConfig extends BaseMekanismConfig {
 
     private static CommentedConfig getUnitStacks() {
         return (CommentedConfig) MMCConfigLoader.loadTomlConfig().get("unit_stacks");
+    }
+
+    public static int getBasicProcesses() {
+        return getFactory().getInt("basicFactoryProcesses");
+    }
+
+    public static int getAdvancedProcesses() {
+        return getFactory().getInt("advancedFactoryProcesses");
+    }
+
+    public static int getEliteProcesses() {
+        return getFactory().getInt("eliteFactoryProcesses");
+    }
+
+    public static int getUltimateProcesses() {
+        return getFactory().getInt("ultimateFactoryProcesses");
+    }
+
+    private static CommentedConfig getFactory() {
+        return (CommentedConfig) MMCConfigLoader.loadTomlConfig().get("factory");
     }
 }

@@ -8,14 +8,14 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(targets = "mekanism.client.gui.element.custom.module.MiniElement", remap = false)
 public interface MiniElementMixin {
     @Accessor
-    public GuiModuleScreen getParent();
+    GuiModuleScreen getParent();
 
     @Accessor
-    public int getXPos();
+    int getXPos();
 
     @Invoker
-    public int invokeGetRelativeX();
+    int invokeGetRelativeX();
 
     @Invoker
-    public int invokeGetRelativeY();
+    int invokeGetRelativeY();
 }

@@ -6,18 +6,19 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EnumToggleMixin",
+    "FactoryTierMixin",
     "FusionReactorDataMixin",
     "ItemGaugeDropperMixin",
     "MiniElementMixin",
     "ModificationStationTileMixin",
     "ModuleAttackMixin",
+    "ModuleBlastingMixin",
     "ModuleDeferredRegisterMixin",
     "ModuleExcavationMixin",
-    "ModuleLocomotiveMixin",
     "ModuleFarmingMixin",
-    "ModuleBlastingMixin",
-    "ModulePropulsionMixin",
-    "ModuleMagneticAttractionMixin"
+    "ModuleLocomotiveMixin",
+    "ModuleMagneticAttractionMixin",
+    "ModulePropulsionMixin"
   ],
   "client": [
     "GuiModuleScreenMixin"
