@@ -148,59 +148,59 @@ public class MMCConfig extends BaseMekanismConfig {
     }
 
     public static int getEnergyUnitStacks() {
-        return getUnitStacks() == null ? 8 : getUnitStacks().getInt("energyUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "energyUnitStacks", 8);
     }
 
     public static int getExcavationUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("excavationUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "excavationUnitStacks", 4);
     }
 
     public static int getAttackUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("attackUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "attackUnitStacks", 4);
     }
 
     public static int getFarmingUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("farmingUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "farmingUnitStacks", 4);
     }
 
     public static int getFortuneUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("fortuneUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "fortuneUnitStacks", 4);
     }
 
     public static int getBlastingUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("blastingUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "blastingUnitStacks", 4);
     }
 
     public static int getBreathingUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("elecBreathUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "elecBreathUnitStacks", 4);
     }
 
     public static int getVisionUnitStacks() {
-        return getUnitStacks() == null ? 3 : getUnitStacks().getInt("visionUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "visionUnitStacks", 3);
     }
 
     public static int getLocomotiveUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("locomotiveUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "locomotiveUnitStacks", 4);
     }
 
     public static int getRepulsorUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("repulsorUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "repulsorUnitStacks", 4);
     }
 
     public static int getPropulsionUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("propulsionUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "propulsionUnitStacks", 4);
     }
 
     public static int getMagneticUnitStacks() {
-        return getUnitStacks() == null ? 4 : getUnitStacks().getInt("magneticUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "magneticUnitStacks", 4);
     }
 
     public static int getSolarUnitStacks() {
-        return getUnitStacks() == null ? 8 : getUnitStacks().getInt("solarUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "solarUnitStacks", 8);
     }
 
     public static int getGeothermalUnitStacks() {
-        return getUnitStacks() == null ? 8 : getUnitStacks().getInt("geothermalUnitStacks");
+        return getConfigFromPath(getUnitStacks(), "geothermalUnitStacks", 8);
     }
 
     private static CommentedConfig getUnitStacks() {
@@ -208,22 +208,26 @@ public class MMCConfig extends BaseMekanismConfig {
     }
 
     public static int getBasicProcesses() {
-        return getFactory() == null ? 3 : getFactory().getInt("basicFactoryProcesses");
+        return getConfigFromPath(getFactory(), "basicFactoryProcesses", 5);
     }
 
     public static int getAdvancedProcesses() {
-        return getFactory() == null ? 5 : getFactory().getInt("advancedFactoryProcesses");
+        return getConfigFromPath(getFactory(), "advancedFactoryProcesses", 5);
     }
 
     public static int getEliteProcesses() {
-        return getFactory() == null ? 7 : getFactory().getInt("eliteFactoryProcesses");
+        return getConfigFromPath(getFactory(), "eliteFactoryProcesses", 7);
     }
 
     public static int getUltimateProcesses() {
-        return getFactory() == null ? 9 : getFactory().getInt("ultimateFactoryProcesses");
+        return getConfigFromPath(getFactory(), "ultimateFactoryProcesses", 9);
     }
 
     private static CommentedConfig getFactory() {
         return (CommentedConfig) MMCConfigLoader.loadTomlConfig().get("factory");
+    }
+
+    private static int getConfigFromPath(CommentedConfig c, String path, int def) {
+        return c == null ? def : c.getIntOrElse(path, def);
     }
 }
