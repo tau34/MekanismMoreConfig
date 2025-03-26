@@ -4,7 +4,7 @@ license="${mod_license}"
 
 [[mods]]
 modId="mmc"
-version="1.3"
+version="1.4"
 displayName="Mekanism More Config"
 authors="Tau34"
 
@@ -22,3 +22,10 @@ description='''${mod_description}'''
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.mmc]]
+modId="mekanismgenerators"
+mandatory=true
+versionRange="[10.4.0.14,)"
+ordering="NONE"
+side="BOTH"
