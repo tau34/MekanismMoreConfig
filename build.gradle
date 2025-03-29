@@ -58,8 +58,8 @@ minecraft {
 }
 
 mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-    config "${mod_id}.mixins.json"
+    add sourceSets.main, "mmc.refmap.json"
+    config "mmc.mixins.json"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
@@ -89,6 +89,8 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     runtimeOnly fg.deobf("curse.maven:emi-580555:5872526")
     runtimeOnly fg.deobf("curse.maven:jade-324717:5672013")
+    runtimeOnly fg.deobf("curse.maven:mekanism-weapons-929829:6065486")
+    compileOnly fg.deobf("curse.maven:mekanism-weapons-929829:6065486")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

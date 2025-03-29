@@ -7,6 +7,7 @@
   "mixins": [
     "EnumToggleMixin",
     "FactoryTierMixin",
+    "FusionDataMixin",
     "FusionReactorDataMixin",
     "ItemGaugeDropperMixin",
     "MiniElementMixin",
@@ -18,7 +19,8 @@
     "ModuleFarmingMixin",
     "ModuleLocomotiveMixin",
     "ModuleMagneticAttractionMixin",
-    "ModulePropulsionMixin"
+    "ModulePropulsionMixin",
+    "ModuleWeaponAttackMixin"
   ],
   "client": [
     "GuiModuleScreenMixin"

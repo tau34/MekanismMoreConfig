@@ -79,6 +79,21 @@ public class ModuleDeferredRegisterMixin {
             builderModifier = builder -> builder.maxStackSize(MMCConfig.getMagneticUnitStacks()).rarity(Rarity.RARE).handlesModeChange();
             cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
         }
+        if (name.equals("attackamplification_unit")) {
+            builderModifier = builder -> builder.maxStackSize(64).rarity(Rarity.UNCOMMON).rendersHUD().handlesModeChange();
+            cir.setReturnValue(rmd(name, builderModifier, supplier, itemProvider));
+        }
+    }
+
+    @Inject(method = "registerMarker", at = @At("HEAD"), cancellable = true)
+    private void modifyMarkerUnit(String name, IItemProvider itemProvider,
+                                  UnaryOperator<ModuleData.ModuleDataBuilder<?>> builderModifier,
+                                  CallbackInfoReturnable<ModuleRegistryObject<?>> cir) {
+        if (name.equals("drawspeed_unit")) {
+            builderModifier = builder -> builder.maxStackSize(64).rarity(Rarity.RARE);
+            cir.setReturnValue(((ModuleDeferredRegister) (Object) this).register(name,
+                    builderModifier.apply(ModuleData.ModuleDataBuilder.marker(itemProvider))));
+        }
     }
 
     @Inject(method = "registerEnchantBased", at = @At("HEAD"), cancellable = true)

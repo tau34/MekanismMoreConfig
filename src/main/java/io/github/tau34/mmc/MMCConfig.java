@@ -3,6 +3,7 @@ package io.github.tau34.mmc;
 import com.electronwill.nightconfig.core.CommentedConfig;
 import mekanism.common.config.BaseMekanismConfig;
 import mekanism.common.config.MekanismConfigHelper;
+import mekanism.common.config.value.CachedBooleanValue;
 import mekanism.common.config.value.CachedDoubleValue;
 import mekanism.common.config.value.CachedIntValue;
 import mekanism.common.config.value.CachedLongValue;
@@ -39,8 +40,12 @@ public class MMCConfig extends BaseMekanismConfig {
     public final CachedIntValue magneticUnitStacks;
     public final CachedIntValue solarUnitStacks;
     public final CachedIntValue geothermalUnitStacks;
+    public final CachedIntValue weaponUnitStacks;
+    public final CachedIntValue drawUnitStacks;
 
     public final CachedDoubleValue fusionIgnitionTemp;
+    public final CachedBooleanValue isFusionHeatedByLava;
+    public final CachedIntValue modificationSpeed;
 
     public final CachedIntValue basicFactoryProcesses;
     public final CachedIntValue advancedFactoryProcesses;
@@ -106,11 +111,19 @@ public class MMCConfig extends BaseMekanismConfig {
                 .defineInRange("solarUnitStacks", 8, 1, 64));
         geothermalUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Geothermal Generator Unit Stacks. default: 8, min: 1, max: 64")
                 .defineInRange("geothermalUnitStacks", 8, 1, 64));
+        weaponUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Weapon Attack Amplification Unit (Mekanism: Weapons) Stacks. default: 4, min: 1, max: 64")
+                .defineInRange("weaponUnitStacks", 4, 1, 64));
+        drawUnitStacks = CachedIntValue.wrap(this, builder.comment("Max Draw Speed Unit (Mekanism: Weapons) Stacks. default: 4, min: 1, max: 64")
+                .defineInRange("drawUnitStacks", 4, 1, 64));
         builder.pop();
 
-        builder.comment("Fusion Reactor Settings").push("fusion");
-        fusionIgnitionTemp = CachedDoubleValue.wrap(this, builder.comment("the ignition temperature of a fusion reactor")
-                .defineInRange("ignitionTemp", 1.0E8, 0, Double.MAX_VALUE));
+        builder.comment("Misc Settings").push("misc");
+        fusionIgnitionTemp = CachedDoubleValue.wrap(this, builder.comment("The ignition temperature of a fusion reactor. default: 1.0E8")
+                .defineInRange("fusionIgnitionTemp", 1.0E8, 0, Double.MAX_VALUE));
+        isFusionHeatedByLava = CachedBooleanValue.wrap(this, builder.comment("Whether fusion reactor would be heated by lava")
+                .define("isFusionHeatedByLava", false));
+        modificationSpeed = CachedIntValue.wrap(this, builder.comment("The ticks Modification Station requires to install. default: 40")
+                .defineInRange("modificationSpeed", 20, 1, Integer.MAX_VALUE));
         builder.pop();
 
         builder.comment("Factory Processes Settings").push("factory");

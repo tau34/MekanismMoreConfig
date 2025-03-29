@@ -1,5 +1,6 @@
 package io.github.tau34.mmc.mixin;
 
+import io.github.tau34.mmc.MMCConfig;
 import mekanism.common.tile.TileEntityModificationStation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,6 +16,6 @@ public class ModificationStationTileMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void modifyTicks(BlockPos pos, BlockState state, CallbackInfo ci) {
-        this.ticksRequired = 1;
+        this.ticksRequired = MMCConfig.INSTANCE.modificationSpeed.get();
     }
 }
