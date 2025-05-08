@@ -5,11 +5,13 @@
   "refmap": "mmc.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ChemicalDissolutionMixin",
     "EnumToggleMixin",
     "FactoryTierMixin",
     "FusionDataMixin",
     "FusionReactorDataMixin",
     "ItemGaugeDropperMixin",
+    "MekanismRecipeTypeMixin",
     "MiniElementMixin",
     "ModificationStationTileMixin",
     "ModuleAttackMixin",

@@ -52,6 +52,13 @@ public class MMCConfig extends BaseMekanismConfig {
     public final CachedIntValue eliteFactoryProcesses;
     public final CachedIntValue ultimateFactoryProcesses;
 
+    public final CachedLongValue quintupling1stMult;
+    public final CachedLongValue quintupling2ndMult;
+    public final CachedIntValue quintupling3rdMult;
+
+    public final CachedLongValue dissolutionOutputCapacity;
+    public final CachedLongValue washerOutputCapacity;
+
     private final ForgeConfigSpec configSpec;
 
     MMCConfig() {
@@ -135,6 +142,24 @@ public class MMCConfig extends BaseMekanismConfig {
                 .defineInRange("eliteFactoryProcesses", 7, 1, Integer.MAX_VALUE));
         ultimateFactoryProcesses = CachedIntValue.wrap(this, builder.comment("Ultimate Factory Processes. default: 9, min: 1, max: 2147483647")
                 .defineInRange("ultimateFactoryProcesses", 9, 1, Integer.MAX_VALUE));
+        builder.pop();
+
+        builder.comment("Ore Processing Settings").push("ore");
+        long MAX = Long.MAX_VALUE / 6000 * 5;
+        quintupling1stMult = CachedLongValue.wrap(this, builder.comment("Chemical Dissolution Output Multiplier of Quintupling Ore Processing. default: 5, min: 1, max: " + MAX)
+                .defineInRange("quintupling1stMult", 5L, 1L, MAX));
+        MAX = Long.MAX_VALUE;
+        quintupling2ndMult = CachedLongValue.wrap(this, builder.comment("Chemical Washing Output Multiplier of Quintupling Ore Processing. default: 1, min: 1, max: " + MAX)
+                .defineInRange("quintupling2ndMult", 1L, 1L, MAX));
+        quintupling3rdMult = CachedIntValue.wrap(this, builder.comment("Chemical Crystallizing Output Multiplier of Quintupling Ore Processing. default: 5, min: 1, max: 64")
+                .defineInRange("quintupling3rdMult", 1, 1, 64));
+        builder.pop();
+
+        builder.comment("Machine Capacity Settings").push("machine_capacity");
+        dissolutionOutputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Dissolution Chamber Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("dissolutionOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        washerOutputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Washer Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("washerOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
         builder.pop();
 
         configSpec = builder.build();
