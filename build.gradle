@@ -60,7 +60,6 @@ minecraft {
 mixin {
     add sourceSets.main, "mmc.refmap.json"
     config "mmc.mixins.json"
-    config "mmc_optional.mixins.json"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
