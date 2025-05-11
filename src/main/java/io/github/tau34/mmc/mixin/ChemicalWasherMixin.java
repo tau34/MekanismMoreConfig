@@ -8,18 +8,24 @@ import mekanism.common.tile.machine.TileEntityChemicalWasher;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = TileEntityChemicalWasher.class, remap = false)
 public class ChemicalWasherMixin {
-    @Redirect(
-            method = "getInitialSlurryTanks",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lmekanism/api/chemical/ChemicalTankBuilder;output(JLmekanism/api/IContentsListener;)Lmekanism/api/chemical/IChemicalTank;"
-            )
-    )
-    private IChemicalTank redirectGasOutput(ChemicalTankBuilder instance, long capacity, @Nullable IContentsListener listener) {
-        return instance.output(MMCConfig.INSTANCE.washerOutputCapacity.get(), listener);
+    @ModifyConstant(method = "getInitialSlurryTanks", constant = @Constant(longValue = 10000L, ordinal = 0))
+    private long modifyInputTankCapacity(long c) {
+        return MMCConfig.INSTANCE.washerInputCapacity.get();
+    }
+
+    @ModifyConstant(method = "getInitialSlurryTanks", constant = @Constant(longValue = 10000L, ordinal = 1))
+    private long modifyOutputTankCapacity(long c) {
+        return MMCConfig.INSTANCE.washerOutputCapacity.get();
+    }
+
+    @ModifyConstant(method = "getInitialFluidTanks", constant = @Constant(intValue = 10000))
+    private int modifyFluidTankCapacity(int c) {
+        return MMCConfig.INSTANCE.washerFluidCapacity.get();
     }
 }

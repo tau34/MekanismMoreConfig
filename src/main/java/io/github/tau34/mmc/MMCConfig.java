@@ -56,8 +56,31 @@ public class MMCConfig extends BaseMekanismConfig {
     public final CachedLongValue quintupling2ndMult;
     public final CachedIntValue quintupling3rdMult;
 
+    public final CachedLongValue nucleosynthesizerInputCapacity;
+    public final CachedLongValue crystallizerInputCapacity;
+    public final CachedLongValue dissolutionInputCapacity;
+    public final CachedLongValue chemicalInfuserLeftCapacity;
+    public final CachedLongValue chemicalInfuserRightCapacity;
+    public final CachedLongValue chemicalInfuserOutputCapacity;
+    public final CachedLongValue oxidizerOutputCapacity;
     public final CachedLongValue dissolutionOutputCapacity;
+    public final CachedLongValue washerInputCapacity;
+    public final CachedIntValue washerFluidCapacity;
     public final CachedLongValue washerOutputCapacity;
+    public final CachedIntValue pumpOutputCapacity;
+    public final CachedIntValue separatorInputCapacity;
+    public final CachedLongValue separatorLeftCapacity;
+    public final CachedLongValue separatorRightCapacity;
+    public final CachedIntValue plenisherInputCapacity;
+    public final CachedLongValue centrifugeInputCapacity;
+    public final CachedLongValue centrifugeOutputCapacity;
+    public final CachedLongValue activatorInputCapacity;
+    public final CachedLongValue activatorOutputCapacity;
+    public final CachedLongValue prcGasInputCapacity;
+    public final CachedIntValue prcFluidCapacity;
+    public final CachedLongValue prcGasOutputCapacity;
+    public final CachedIntValue rotaryFluidCapacity;
+    public final CachedLongValue rotaryGasCapacity;
 
     private final ForgeConfigSpec configSpec;
 
@@ -156,10 +179,56 @@ public class MMCConfig extends BaseMekanismConfig {
         builder.pop();
 
         builder.comment("Machine Capacity Settings").push("machine_capacity");
+        nucleosynthesizerInputCapacity = CachedLongValue.wrap(this, builder.comment("Antiprotonic Nucleosynthesizer Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("nucleosynthesizerInputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        crystallizerInputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Crystallizer Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("crystallizerInputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        oxidizerOutputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Oxidizer Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("oxidizerOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        dissolutionInputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Dissolution Chamber Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("dissolutionInputCapacity", 10000L, 1L, Long.MAX_VALUE));
         dissolutionOutputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Dissolution Chamber Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
                 .defineInRange("dissolutionOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        chemicalInfuserLeftCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Infuser Left Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("chemicalInfuserLeftCapacity", 10000L, 1L, Long.MAX_VALUE));
+        chemicalInfuserRightCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Infuser Right Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("chemicalInfuserRightCapacity", 10000L, 1L, Long.MAX_VALUE));
+        chemicalInfuserOutputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Infuser Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("chemicalInfuserOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        washerInputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Washer Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("washerInputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        washerFluidCapacity = CachedIntValue.wrap(this, builder.comment("Chemical Washer Fluid Input Capacity. default: 10000, min: 1, max: " + Integer.MAX_VALUE)
+                .defineInRange("washerFluidCapacity", 10000, 1, Integer.MAX_VALUE));
         washerOutputCapacity = CachedLongValue.wrap(this, builder.comment("Chemical Washer Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
                 .defineInRange("washerOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        pumpOutputCapacity = CachedIntValue.wrap(this, builder.comment("Electric Pump Output Capacity. default: 10000, min: 1, max: " + Integer.MAX_VALUE)
+                .defineInRange("pumpOutputCapacity", 10000, 1, Integer.MAX_VALUE));
+        separatorInputCapacity = CachedIntValue.wrap(this, builder.comment("Electrolytic Separator Input Capacity. default: 24000, min: 1, max: " + Integer.MAX_VALUE)
+                .defineInRange("separatorInputCapacity", 24000, 1, Integer.MAX_VALUE));
+        separatorLeftCapacity = CachedLongValue.wrap(this, builder.comment("Electrolytic Separator Left Output Capacity. default: 2400, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("separatorLeftCapacity", 2400L, 1L, Long.MAX_VALUE));
+        separatorRightCapacity = CachedLongValue.wrap(this, builder.comment("Electrolytic Separator Right Output Capacity. default: 2400, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("separatorRightCapacity", 2400L, 1L, Long.MAX_VALUE));
+        plenisherInputCapacity = CachedIntValue.wrap(this, builder.comment("Fluidic Plenisher Input Capacity. default: 10000, min: 1, max: " + Integer.MAX_VALUE)
+                .defineInRange("plenisherInputCapacity", 10000, 1, Integer.MAX_VALUE));
+        centrifugeInputCapacity = CachedLongValue.wrap(this, builder.comment("Isotopic Centrifuge Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("centrifugeInputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        centrifugeOutputCapacity = CachedLongValue.wrap(this, builder.comment("Isotopic Centrifuge Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("centrifugeOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        activatorInputCapacity = CachedLongValue.wrap(this, builder.comment("Solar Neutron Activator Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("activatorInputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        activatorOutputCapacity = CachedLongValue.wrap(this, builder.comment("Solar Neutron Activator Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("activatorOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        prcGasInputCapacity = CachedLongValue.wrap(this, builder.comment("PRC Gas Input Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("prcGasInputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        prcFluidCapacity = CachedIntValue.wrap(this, builder.comment("PRC Fluid Input Capacity. default: 10000, min: 1, max: " + Integer.MAX_VALUE)
+                .defineInRange("prcFluidCapacity", 10000, 1, Integer.MAX_VALUE));
+        prcGasOutputCapacity = CachedLongValue.wrap(this, builder.comment("PRC Gas Output Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("prcGasOutputCapacity", 10000L, 1L, Long.MAX_VALUE));
+        rotaryFluidCapacity = CachedIntValue.wrap(this, builder.comment("Rotary Fluid Capacity. default: 10000, min: 1, max: " + Integer.MAX_VALUE)
+                .defineInRange("rotaryFluidCapacity", 10000, 1, Integer.MAX_VALUE));
+        rotaryGasCapacity = CachedLongValue.wrap(this, builder.comment("Rotary Gas Capacity. default: 10000, min: 1, max: " + Long.MAX_VALUE)
+                .defineInRange("rotaryGasCapacity", 10000L, 1L, Long.MAX_VALUE));
         builder.pop();
 
         configSpec = builder.build();
